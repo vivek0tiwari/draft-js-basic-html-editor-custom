@@ -33,28 +33,14 @@ export default class BasicHtmlEditor extends React.Component {
       }
     ]);
 
-    this.ENTITY_CONTROLS = [
+    this.ENTITY_CONTROLS = this.props.enableEntityControls?[
       {label: 'Add Link', action: this._addLink.bind(this) },
       {label: 'Remove Link', action: this._removeLink.bind(this) }
-    ];
+    ]:[]
 
-    this.INLINE_STYLES = [
-      {label: 'Bold', style: 'BOLD'},
-      {label: 'Italic', style: 'ITALIC'},
-      {label: 'Underline', style: 'UNDERLINE'},
-      {label: 'Monospace', style: 'CODE'},
-      {label: 'Strikethrough', style: 'STRIKETHROUGH'}
-    ];
+    this.INLINE_STYLES = this.props.inlineStyles?this.props.inlineStyles:[]
 
-    this.BLOCK_TYPES = [
-      {label: 'P', style: 'unstyled'},
-      {label: 'H1', style: 'header-one'},
-      {label: 'H2', style: 'header-two'},
-      {label: 'Blockquote', style: 'blockquote'},
-      {label: 'UL', style: 'unordered-list-item'},
-      {label: 'OL', style: 'ordered-list-item'},
-      {label: 'Code Block', style: 'code-block'}
-    ];
+    this.BLOCK_TYPES = this.props.blockType?this.props.blockType:[]
 
     this.state = {
       editorState: value ?
